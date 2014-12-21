@@ -1,15 +1,18 @@
 package auth;
 
-import com.colibri.toread.api.LoggableResource;
-import com.colibri.toread.persistence.UserDAO;
-import org.apache.log4j.Logger;
+
+import api.LoggableResource;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.restlet.ext.json.JsonRepresentation;
+import persistence.UserDAO;
 
+@Slf4j
 public class AuthenticatableResource extends LoggableResource {
-	Logger logger = Logger.getLogger(AuthenticatableResource.class);
-	
+
+	@SneakyThrows
 	public boolean authenticateRequest(JSONObject json){
 		String username = "";
 		String deviceId = "";
@@ -34,7 +37,7 @@ public class AuthenticatableResource extends LoggableResource {
 				e.printStackTrace();
 			} 
 		
-		logger.info("Authenticating " + username + " with device " + deviceId);
+		log.info("Authenticating " + username + " with device " + deviceId);
 		
 		UserDAO dao = new UserDAO();
 		User user = dao.findByUsername(username);
@@ -42,12 +45,7 @@ public class AuthenticatableResource extends LoggableResource {
 		if(user == null)
 			return false;
 		
-		Device device = user.findDevice(deviceId);
-		
-		if(device == null)
-			return false;
-		
-		return device.validateToken(token);
+		return false;
 	}
 	
 	public JsonRepresentation authenticationError(){
@@ -59,7 +57,7 @@ public class AuthenticatableResource extends LoggableResource {
 			e.printStackTrace();
 		}
 
-		logger.warn("Device authentication failed");		
+		log.warn("Device authentication failed");
 		return new JsonRepresentation(object);
 	}
 }
