@@ -1,6 +1,7 @@
 package auth;
 
 import config.ReadProperties;
+import lombok.SneakyThrows;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -11,8 +12,9 @@ import java.security.spec.InvalidKeySpecException;
 
 public class Password {
 	private String cipherText;
-	
-	public void encrypt(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+
+	@SneakyThrows
+	public Password (String password) {
 		//Create a salted hash of the original password with the salt appended
 		//To the hash and delimited by a colon
 		String hash = createHash(password);
