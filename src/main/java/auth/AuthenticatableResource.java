@@ -18,13 +18,13 @@ public class AuthenticatableResource extends LoggableResource {
 
 		try {
 			JSONObject authData;
-			
-			if(json.has("auth_data"))
-				authData = json.getJSONObject("auth_data");
+
+			if(json.has("auth"))
+				authData = json.getJSONObject("auth");
 			else
 				return false;
-			
-			if(authData.has("username") && authData.has("device_id") && authData.has("token")) {
+
+			if(authData.has("username") && authData.has("token")) {
 				String username = authData.getString("username");
 				String token = authData.getString("token");
 
@@ -35,18 +35,18 @@ public class AuthenticatableResource extends LoggableResource {
 
 				if(user == null)
 					return false;
-			}
-			else
-				return false;
-			} catch (JSONException e) {
-				e.printStackTrace();
-			} 
-		
 
-		
+				return user.getToken().validateToken(token);
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+
+
 		return false;
 	}
-	
+
 	public JsonRepresentation authenticationError(){
 		JSONObject object = new JSONObject();
 		try {
