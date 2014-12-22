@@ -1,6 +1,6 @@
 package persistence;
 
-import auth.User;
+import entities.User;
 import com.google.code.morphia.dao.BasicDAO;
 import org.bson.types.ObjectId;
 
@@ -10,6 +10,6 @@ public class UserDAO extends BasicDAO<User, ObjectId> {
 	}
 	
 	public User findByUsername(String username){
-		return ds.createQuery(User.class).field("userName").equal(username).get();
+		return ds.createQuery(User.class).field("username").equal(username).get();
 	}
 }

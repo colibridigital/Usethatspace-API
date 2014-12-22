@@ -2,6 +2,7 @@ package auth;
 
 
 import api.LoggableResource;
+import entities.User;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
@@ -14,10 +15,7 @@ public class AuthenticatableResource extends LoggableResource {
 
 	@SneakyThrows
 	public boolean authenticateRequest(JSONObject json){
-		String username = "";
-		String deviceId = "";
-		String token = "";
-		
+
 		try {
 			JSONObject authData;
 			
@@ -27,9 +25,16 @@ public class AuthenticatableResource extends LoggableResource {
 				return false;
 			
 			if(authData.has("username") && authData.has("device_id") && authData.has("token")) {
-				username = authData.getString("username");
-				deviceId = authData.getString("device_id");
-				token = authData.getString("token");
+				String username = authData.getString("username");
+				String token = authData.getString("token");
+
+				log.info("Authenticating " + username);
+
+				UserDAO dao = new UserDAO();
+				User user = dao.findByUsername(username);
+
+				if(user == null)
+					return false;
 			}
 			else
 				return false;
@@ -37,13 +42,7 @@ public class AuthenticatableResource extends LoggableResource {
 				e.printStackTrace();
 			} 
 		
-		log.info("Authenticating " + username + " with device " + deviceId);
-		
-		UserDAO dao = new UserDAO();
-		User user = dao.findByUsername(username);
-		
-		if(user == null)
-			return false;
+
 		
 		return false;
 	}
