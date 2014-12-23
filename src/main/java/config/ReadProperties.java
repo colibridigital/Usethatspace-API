@@ -10,7 +10,7 @@ public class ReadProperties {
 	//Load static properties from the properties file
 	private static void load() {
 		try {
-            InputStream inputStream =ReadProperties.class.getResourceAsStream("/ToRead.properties");
+            InputStream inputStream =ReadProperties.class.getResourceAsStream("/uts.properties");
 
 			trProps = new Properties();
 			trProps.load(inputStream);

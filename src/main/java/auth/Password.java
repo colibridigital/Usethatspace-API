@@ -20,7 +20,9 @@ public class Password {
 		String hash = createHash(password);
 		this.cipherText = hash;
 	}
-	
+
+	public Password() {}
+
 	public boolean validate(String password) throws NumberFormatException, NoSuchAlgorithmException, InvalidKeySpecException {
 		return(validatePassword(password, this.cipherText));
 	}

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -26,6 +27,8 @@ public class User extends Identifiable {
     private String postCode;
     private String town;
     private String country;
+    private String nationality;
+    private String ethnicity;
     private String countryOfBirth;
     private String emailAddress;
     private String landLine;
@@ -35,8 +38,8 @@ public class User extends Identifiable {
     private boolean termsAgreed;
     private boolean marketOptOut;
 
-    private List<Hobby> hobbyList;
-    private List<Vehicle> vehicleList;
+    private List<Hobby> hobbyList = new ArrayList<>();
+    private List<Vehicle> vehicleList = new ArrayList<>();
 
     @SneakyThrows
     public boolean validatePassword(String password){
@@ -53,6 +56,14 @@ public class User extends Identifiable {
         jsonObject.put("token", this.getToken().getToken());
 
         return jsonObject;
+    }
+
+    public void addVehicle(Vehicle vehicle) {
+        vehicleList.add(vehicle);
+    }
+
+    public void addHobby(Hobby hobby) {
+        hobbyList.add(hobby);
     }
 }
 
