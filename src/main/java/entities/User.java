@@ -1,18 +1,30 @@
 package entities;
 
-import auth.Identifiable;
+import auth.Identity;
+import auth.Password;
+import auth.Token;
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Indexed;
+import com.google.code.morphia.utils.IndexDirection;
 import entities.vehicle.Vehicle;
 import lombok.Data;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
+import persistence.MongoBase;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
-public class User extends Identifiable {
+public class User extends MongoBase {
+    //
+    @Indexed(value= IndexDirection.ASC, name="userNameIndex", unique=true)
+    private String username;
+    private Password password;
+    private Token token;
+
+
     private String title;
     private String firstName;
     private String lastName;

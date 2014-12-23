@@ -1,5 +1,7 @@
 import auth.Password;
+import auth.Token;
 import auth.TokenFactory;
+import com.google.gson.Gson;
 import entities.Hobby;
 import entities.User;
 import entities.vehicle.Parking;
@@ -11,15 +13,22 @@ public class CreateUser {
     public static void main(String[] args){
         User user = getUser();
 
-        UserDAO dao = new UserDAO();
-        dao.save(user);
+//        UserDAO dao = new UserDAO();
+//        dao.save(user);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(user, User.class);
+        System.out.println();
+
+        User newUser = gson.fromJson(json, User.class);
+        System.out.println();
     }
 
-    private static User getUser() {
+    public static User getUser() {
         User user = new User();
         user.setUsername("jamescross91");
         user.setPassword(new Password("password"));
-        user.setToken(TokenFactory.generate());
+        user.setToken(new Token("sometoken"));
 
         user.setTitle("Mr");
         user.setFirstName("James");
@@ -49,6 +58,7 @@ public class CreateUser {
         user.addVehicle(getVehicle1());
         user.addVehicle(getVehicle2());
         user.addHobby(getHobby1());
+        user.addHobby(getHobby2());
         return user;
     }
 

@@ -1,7 +1,11 @@
 package auth;
 
 public class Token {
-	private final String secureToken;
+	private String secureToken;
+
+	public Token() {
+
+	}
 
 	public Token(String secureToken) {
 		this.secureToken = secureToken;

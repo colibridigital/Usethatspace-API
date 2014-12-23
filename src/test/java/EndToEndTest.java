@@ -1,3 +1,4 @@
+import api.LoadProfileResource;
 import api.SaveProfileResource;
 import de.flapdoodle.embed.mongo.MongodExecutable;
 import de.flapdoodle.embed.mongo.MongodProcess;
@@ -7,10 +8,15 @@ import de.flapdoodle.embed.mongo.config.MongodConfigBuilder;
 import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
+import entities.User;
 import lombok.SneakyThrows;
+import org.apache.commons.io.IOUtils;
+import org.bson.types.ObjectId;
+import org.json.JSONObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import persistence.UserDAO;
 
 public class EndToEndTest {
     MongodStarter starter = MongodStarter.getDefaultInstance();
@@ -31,10 +37,22 @@ public class EndToEndTest {
     }
 
     @Test
+    @SneakyThrows
     public void endToEnd() {
-        System.out.println();
-        SaveProfileResource resource = new SaveProfileResource();
+        //Insert a user
+        User user = CreateUser.getUser();
+        UserDAO userDAO = new UserDAO();
+        userDAO.save(user);
 
+        //Make sure its persisted
+        Thread.sleep(1000);
+
+        LoadProfileResource loadProfileResource = new LoadProfileResource();
+        JSONObject authJson = new JSONObject();
+        authJson.put("username", "jamescross91");
+
+        String userJson = loadProfileResource.getUserJson(authJson);
+        System.out.println();
     }
 
     private void save() {

@@ -1,6 +1,7 @@
 package api;
 
 import auth.AuthenticatableResource;
+import auth.Password;
 import auth.TokenFactory;
 import com.google.gson.Gson;
 import entities.User;
@@ -40,16 +41,23 @@ public class LoadProfileResource extends AuthenticatableResource{
         else
             return getResponseRepresentation(false, "No data for a device was supplied");
 
+        String userJsonString = getUserJson(authJSON);
+
+        return new JsonRepresentation(userJsonString);
+    }
+
+    public String getUserJson(JSONObject authJSON) throws JSONException {
         String username = authJSON.getString("username");
         UserDAO userDAO = new UserDAO();
         User thisUser = userDAO.findByUsername(username);
 
+        //Remove password field
+        thisUser.setPassword(new Password());
+
         //Jsonify user and reply to the client
         Gson gson = new Gson();
 
-        String userJsonString = gson.toJson(thisUser, User.class);
-
-        return new JsonRepresentation(userJsonString);
+        return gson.toJson(thisUser, User.class);
     }
 
     private JsonRepresentation getResponseRepresentation(boolean success, String message){

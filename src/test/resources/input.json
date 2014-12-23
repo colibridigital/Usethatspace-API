@@ -1,0 +1,122 @@
+
+{
+  "title":"Mr",
+  "firstName":"James",
+  "lastName":"Cross",
+  "gender":"Male",
+  "dob":"210491",
+  "employmentStatus":"Employed",
+  "occupation":"Engineer",
+  "institution":"Reading",
+  "eduCourse":"Computer Engineering",
+  "addr1":"Flat 2",
+  "add2":"97 Earls Court Road",
+  "postCode":"W8 6QH",
+  "town":"London",
+  "country":"UK",
+  "nationality":"British",
+  "ethnicity":"White",
+  "countryOfBirth":"UK",
+  "emailAddress":"james_cross91@hotmail.com",
+  "landLine":"01707 662538",
+  "mobile":"07522 700296",
+  "hasLicence":true,
+  "hasConvictions":false,
+  "termsAgreed":true,
+  "marketOptOut":false,
+  "hobbyList":[
+    {
+      "name":"Football",
+      "description":"Kicking a ball",
+      "weeklyFreq":1,
+      "takesCar":true
+    }
+  ],
+  "vehicleList":[
+    {
+      "make":"BMW",
+      "model":"3 Series",
+      "colour":"Grey",
+      "registration":"GJ08TTO",
+      "mileage":8000,
+      "roadLegal":true,
+      "anualMileage":0,
+      "routeList":[
+        {
+          "startPostCode":"EN6 1LG",
+          "endPostCode":"W8 6QH",
+          "startTime":0,
+          "duration":1,
+          "weeklyFreq":1
+        },
+        {
+          "startPostCode":"W8 6QH\"",
+          "endPostCode":"EN6 1LG",
+          "startTime":0,
+          "duration":1,
+          "weeklyFreq":1
+        }
+      ],
+      "parkingList":[
+        {
+          "postcode":"W8 6QH",
+          "fromTime":0,
+          "toTime":1,
+          "weeklyFreq":5
+        },
+        {
+          "postcode":"EN6 1LG",
+          "fromTime":0,
+          "toTime":1,
+          "weeklyFreq":1
+        }
+      ]
+    },
+    {
+      "make":"Ford",
+      "model":"Escort",
+      "colour":"Grey",
+      "registration":"123fdf",
+      "mileage":8000,
+      "roadLegal":false,
+      "anualMileage":0,
+      "routeList":[
+        {
+          "startPostCode":"DJS 1LG",
+          "endPostCode":"G7 6QH",
+          "startTime":0,
+          "duration":1,
+          "weeklyFreq":1
+        },
+        {
+          "startPostCode":"G1 6QH\"",
+          "endPostCode":"EN6 Blah",
+          "startTime":0,
+          "duration":1,
+          "weeklyFreq":1
+        }
+      ],
+      "parkingList":[
+        {
+          "postcode":"W8 6QH",
+          "fromTime":0,
+          "toTime":1,
+          "weeklyFreq":5
+        },
+        {
+          "postcode":"EN6 1LG",
+          "fromTime":0,
+          "toTime":1,
+          "weeklyFreq":1
+        }
+      ]
+    }
+  ],
+  "username":"jamescross91",
+  "password":{
+    "cipherText":"c125db50218d740d799b4625c34fe6c1ba768ea0d9c69f175b8fcfb3bc9cec38:57781d406046f2528ac7ff2e1e2ce105eeab0a5fe5d9e8d5aebbeb75d05a14cc"
+  },
+  "token":{
+    "secureToken":"b0c6e9704298164f6789b3cd73895a12587c4533d9a9c4a67cc60fb2eca3a9374dbff6ef0e71c47cf788a119607151687919c978609be583640496ee0632f058"
+  }
+}
