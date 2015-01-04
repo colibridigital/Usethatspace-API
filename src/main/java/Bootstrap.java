@@ -20,7 +20,7 @@ public class Bootstrap {
         Series<Parameter> params = server.getContext().getParameters();
 
         //Add the SSL certficiate
-        params.add("keystorePath", "cert/server.jks");
+        params.add("keystorePath", "cert/serverX.jks");
         params.add("keystorePassword", "password");
         params.add("keyPassword", "password");
         params.add("keystoreType", "JKS");
