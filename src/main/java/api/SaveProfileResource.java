@@ -21,7 +21,7 @@ import java.io.IOException;
 public class SaveProfileResource extends AuthenticatableResource{
     @Get
     public String represent() {
-        return "Load profile";
+        return "Save profile";
     }
 
     @Post
