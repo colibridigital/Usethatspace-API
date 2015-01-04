@@ -8,6 +8,7 @@ import org.restlet.data.Parameter;
 import org.restlet.data.Protocol;
 import org.restlet.util.Series;
 
+import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 
@@ -23,13 +24,13 @@ public class Bootstrap {
         Server server = component.getServers().add(Protocol.HTTPS, 4242);
         Series<Parameter> params = server.getContext().getParameters();
 
-        URL sqlScriptUrl = Bootstrap.class
-                .getClassLoader().getResource("serverX.jks");
+        File pwd = new File(".");
+        String path = pwd.getCanonicalPath();
+        String keystorePath = path + "/serverX.jks";
 
-        String path = sqlScriptUrl.getPath();
 
         //Add the SSL certficiate
-        params.add("keyStorePath", path);
+        params.add("keyStorePath", keystorePath);
         params.add("keystorePassword", "password");
         params.add("keyPassword", "password");
         params.add("keystoreType", "JKS");
