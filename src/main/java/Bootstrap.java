@@ -15,16 +15,12 @@ public class Bootstrap {
         //Create a new Component.
         Component component = new Component();
 
-        //Allow file handling
-        component.getClients().add(Protocol.FILE);
-
         //Create a new HTTPS server listening on port 2709.
         Server server = component.getServers().add(Protocol.HTTPS, 443);
         Series<Parameter> params = server.getContext().getParameters();
 
         //Add the SSL certficiate
-        params.add("sslContextFactory", "org.restlet.ext.ssl.PkixSslContextFactory");
-        params.add("keystorePath", "/home/james/server.jks");
+        params.add("keystorePath", "/cert/server.jks");
         params.add("keystorePassword", "password");
         params.add("keyPassword", "password");
         params.add("keystoreType", "JKS");
