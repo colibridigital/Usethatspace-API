@@ -37,7 +37,7 @@ public class SaveProfileResource extends AuthenticatableResource{
 
         //Get the device specific JSON
         if(!json.has("auth"))
-            return getResponseRepresentation(false, "No data for a device was supplied");
+            return getResponseRepresentation(false, "No auth data was supplied");
 
         if(!json.has("user"))
             return getResponseRepresentation(false, "No data for a user was supplied");
@@ -65,6 +65,12 @@ public class SaveProfileResource extends AuthenticatableResource{
 
     private User getUpdatedUser(JSONObject userJSON, String token, String password, ObjectId id) {
         Gson gson = new Gson();
+
+        //Remove the ID field as GSON cannot deserialize it
+        if(userJSON.has("id")) {
+            userJSON.remove("id");
+        }
+
         User updatedUser = gson.fromJson(userJSON.toString(), User.class);
 
         updatedUser.setToken(new Token(token));
