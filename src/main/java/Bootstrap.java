@@ -1,4 +1,5 @@
 import api.UTSApplication;
+import config.ReadProperties;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.restlet.Component;
@@ -6,6 +7,9 @@ import org.restlet.Server;
 import org.restlet.data.Parameter;
 import org.restlet.data.Protocol;
 import org.restlet.util.Series;
+
+import java.io.InputStream;
+import java.net.URL;
 
 @Slf4j
 public class Bootstrap {
@@ -16,11 +20,16 @@ public class Bootstrap {
         Component component = new Component();
 
         //Create a new HTTPS server listening on port 2709.
-        Server server = component.getServers().add(Protocol.HTTPS, 443);
+        Server server = component.getServers().add(Protocol.HTTPS, 4242);
         Series<Parameter> params = server.getContext().getParameters();
 
+        URL sqlScriptUrl = Bootstrap.class
+                .getClassLoader().getResource("serverX.jks");
+
+        String path = sqlScriptUrl.getPath();
+
         //Add the SSL certficiate
-        params.add("keystorePath", "cert/serverX.jks");
+        params.add("keyStorePath", path);
         params.add("keystorePassword", "password");
         params.add("keyPassword", "password");
         params.add("keystoreType", "JKS");
