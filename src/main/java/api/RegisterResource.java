@@ -30,8 +30,7 @@ public class RegisterResource extends LoggableResource{
         //Log it
         logRequest(json.toString());
 
-        //Get the device specific JSON
-        if(json.has("user") )
+        if(json.has("auth") )
             userJSON = json.getJSONObject("auth");
         else
             return getResponseRepresentation(false, "No data for a device was supplied");
@@ -42,6 +41,11 @@ public class RegisterResource extends LoggableResource{
         UserDAO dao = new UserDAO();
 
         User user = new User();
+
+        if(!(dao.findByUsername(username) == null)) {
+            return getResponseRepresentation(false, "Username already exists");
+        }
+
         user.setUsername(username);
         user.setPassword(new Password(password));
         user.setToken(TokenFactory.generate());
