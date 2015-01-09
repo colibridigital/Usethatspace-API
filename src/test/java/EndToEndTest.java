@@ -1,6 +1,5 @@
 import api.LoadProfileResource;
 import api.SaveProfileResource;
-import com.google.gson.Gson;
 import de.flapdoodle.embed.mongo.Command;
 import de.flapdoodle.embed.mongo.MongodExecutable;
 import de.flapdoodle.embed.mongo.MongodStarter;
@@ -12,7 +11,6 @@ import de.flapdoodle.embed.process.runtime.Network;
 import entities.User;
 import lombok.SneakyThrows;
 import org.apache.commons.io.IOUtils;
-import org.bson.types.ObjectId;
 import org.json.JSONObject;
 import org.junit.After;
 import org.junit.Before;
@@ -20,7 +18,6 @@ import org.junit.Test;
 import persistence.UserDAO;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class EndToEndTest {
     int port = 27018;
