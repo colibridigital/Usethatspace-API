@@ -20,6 +20,9 @@ public class UTSApplication extends Application {
 		router.attach("/driver/save", SaveProfileResource.class);
 		router.attach("/driver/load", LoadProfileResource.class);
 
+		//Business
+		router.attach("/business/register", NewBusinessResource.class);
+
 		return router;
 	}
 
