@@ -21,14 +21,11 @@ public class CreateBusiness {
         business.setCompanyName("Noble");
         business.setCompanyNumber("1234");
         business.setVatNumber("5678");
-        business.setPosition("Engineer");
-        business.setAddr1("10 Downing Street");
-        business.setAdd2("Whitehall");
-        business.setPosition("W1 6GH");
-        business.setTown("London");
-        business.setCountry("UK");
+        business.setCompanyAddress("10 Downing Street, Whitehall");
+        business.setCompanyPostcode("ME15 0BB");
         business.setContactNumber("123456789");
-        business.setEstimatedBudget(999);
+        business.setContactEmail("ahmed@foo.com");
+        business.setEstimatedBudget("999");
 
         return business;
     }

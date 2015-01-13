@@ -30,7 +30,8 @@ public class UTSApplication extends Application {
 		//Business
 		router.attach("/business/register", NewBusinessResource.class);
 
-		return router;
+//		return router;
+		return corsFilter;
 	}
 
 }

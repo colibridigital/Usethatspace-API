@@ -10,15 +10,12 @@ public class Business extends MongoBase {
     private String title;
     private String firstName;
     private String lastName;
+    private String contactNumber;
+    private String contactEmail;
     private String companyName;
     private String companyNumber;
     private String vatNumber;
-    private String position;
-    private String addr1;
-    private String add2;
-    private String postCode;
-    private String town;
-    private String country;
-    private String contactNumber;
-    private int estimatedBudget;
+    private String companyAddress;
+    private String companyPostcode;
+    private String estimatedBudget;
 }
