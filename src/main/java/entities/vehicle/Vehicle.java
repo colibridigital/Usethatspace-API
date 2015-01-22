@@ -15,14 +15,14 @@ public class Vehicle {
     private boolean roadLegal;
     private int anualMileage;
 
-    private List<Route> routeList = new ArrayList<>();
-    private List<Parking> parkingList = new ArrayList<>();
-
-    public void addRoute(Route route) {
-        routeList.add(route);
-    }
-
-    public void addParking(Parking parking) {
-        parkingList.add(parking);
-    }
+//    private List<Route> routeList = new ArrayList<>();
+//    private List<Parking> parkingList = new ArrayList<>();
+//
+//    public void addRoute(Route route) {
+//        routeList.add(route);
+//    }
+//
+//    public void addParking(Parking parking) {
+//        parkingList.add(parking);
+//    }
 }

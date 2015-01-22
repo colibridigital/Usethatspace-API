@@ -6,6 +6,6 @@ import lombok.Data;
 public class Hobby {
     private String name;
     private String description;
-    private int weeklyFreq;
+    private String weeklyFreq;
     private boolean takesCar;
 }

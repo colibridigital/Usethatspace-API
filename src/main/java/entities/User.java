@@ -25,33 +25,26 @@ public class User extends MongoBase {
     private Token token;
 
 
+    private String emailAddress;
     private String title;
     private String firstName;
     private String lastName;
-    private String gender;
-    private String dob;
-    private String employmentStatus;
-    private String occupation;
-    private String institution;
-    private String eduCourse;
-    private String addr1;
-    private String add2;
     private String postCode;
-    private String town;
-    private String country;
-    private String nationality;
     private String ethnicity;
     private String countryOfBirth;
-    private String emailAddress;
-    private String landLine;
     private String mobile;
+    private String landLine;
+    private String address;
+    private String dob;
+    private String gender;
+    private String employmentStatus;
+    private String occupation;
+    private String nationality;
+    private boolean termsAgreed;
+    private List<Vehicle> cars = new ArrayList<>();
     private boolean hasLicence;
     private boolean hasConvictions;
-    private boolean termsAgreed;
-    private boolean marketOptOut;
-
     private List<Hobby> hobbyList = new ArrayList<>();
-    private List<Vehicle> vehicleList = new ArrayList<>();
 
     @SneakyThrows
     public boolean validatePassword(String password){
@@ -71,7 +64,7 @@ public class User extends MongoBase {
     }
 
     public void addVehicle(Vehicle vehicle) {
-        vehicleList.add(vehicle);
+        cars.add(vehicle);
     }
 
     public void addHobby(Hobby hobby) {

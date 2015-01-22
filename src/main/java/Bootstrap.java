@@ -21,19 +21,8 @@ public class Bootstrap {
         Component component = new Component();
 
         //Create a new HTTPS server listening on port 2709.
-        Server server = component.getServers().add(Protocol.HTTPS, 4242);
+        Server server = component.getServers().add(Protocol.HTTP, 4242);
         Series<Parameter> params = server.getContext().getParameters();
-
-        File pwd = new File(".");
-        String path = pwd.getCanonicalPath();
-        String keystorePath = path + "/serverX.jks";
-
-
-        //Add the SSL certficiate
-        params.add("keyStorePath", keystorePath);
-        params.add("keystorePassword", "password");
-        params.add("keyPassword", "password");
-        params.add("keystoreType", "JKS");
 
         component.getContext().getParameters().add("maxThreads", "1024");
         component.getContext().getParameters().add("minThreads", "128");

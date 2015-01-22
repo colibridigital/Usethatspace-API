@@ -37,13 +37,7 @@ public class CreateUser {
         user.setDob("210491");
         user.setEmploymentStatus("Employed");
         user.setOccupation("Engineer");
-        user.setInstitution("Reading");
-        user.setEduCourse("Computer Engineering");
-        user.setAddr1("Flat 2");
-        user.setAdd2("97 Earls Court Road");
         user.setPostCode("W8 6QH");
-        user.setTown("London");
-        user.setCountry("UK");
         user.setNationality("British");
         user.setEthnicity("White");
         user.setCountryOfBirth("UK");
@@ -53,7 +47,6 @@ public class CreateUser {
         user.setHasLicence(true);
         user.setHasConvictions(false);
         user.setTermsAgreed(true);
-        user.setMarketOptOut(false);
 
         user.addVehicle(getVehicle1());
         user.addVehicle(getVehicle2());
@@ -98,10 +91,7 @@ public class CreateUser {
         parking2.setToTime(1L);
         parking2.setWeeklyFreq(1);
 
-        vehicle.addRoute(route1);
-        vehicle.addRoute(route2);
-        vehicle.addParking(parking1);
-        vehicle.addParking(parking2);
+
         return vehicle;
     }
 
@@ -140,11 +130,6 @@ public class CreateUser {
         parking2.setFromTime(0L);
         parking2.setToTime(1L);
         parking2.setWeeklyFreq(1);
-
-        vehicle.addRoute(route1);
-        vehicle.addRoute(route2);
-        vehicle.addParking(parking1);
-        vehicle.addParking(parking2);
         return vehicle;
     }
 
@@ -152,7 +137,7 @@ public class CreateUser {
         Hobby hobby = new Hobby();
         hobby.setName("Football");
         hobby.setDescription("Kicking a ball");
-        hobby.setWeeklyFreq(1);
+        hobby.setWeeklyFreq("1");
         hobby.setTakesCar(true);
 
         return hobby;
@@ -162,7 +147,7 @@ public class CreateUser {
         Hobby hobby = new Hobby();
         hobby.setName("Golf");
         hobby.setDescription("Hitting a ball");
-        hobby.setWeeklyFreq(2);
+        hobby.setWeeklyFreq("2");
         hobby.setTakesCar(true);
 
         return hobby;
