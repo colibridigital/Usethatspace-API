@@ -2,11 +2,7 @@ package api;
 
 import org.restlet.Application;
 import org.restlet.Restlet;
-import org.restlet.engine.application.CorsFilter;
 import org.restlet.routing.Router;
-
-import java.util.Arrays;
-import java.util.HashSet;
 
 public class UTSApplication extends Application {
 
@@ -16,9 +12,6 @@ public class UTSApplication extends Application {
 	@Override
 	public synchronized Restlet createInboundRoot() {
 		Router router = new Router(getContext());
-
-		CorsFilter corsFilter = new CorsFilter(getContext(), router);
-		corsFilter.setAllowedOrigins(new HashSet(Arrays.asList("http://localhost:8000")));
 
 		router.attach("/register", RegisterResource.class);
 		router.attach("/login", LoginResource.class);
@@ -30,8 +23,6 @@ public class UTSApplication extends Application {
 		//Business
 		router.attach("/business/register", NewBusinessResource.class);
 
-//		return router;
-		return corsFilter;
+		return router;
 	}
-
 }
