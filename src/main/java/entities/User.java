@@ -38,6 +38,7 @@ public class User extends MongoBase {
     private String dob;
     private String gender;
     private String employmentStatus;
+    private String company;
     private String occupation;
     private String nationality;
     private boolean termsAgreed;

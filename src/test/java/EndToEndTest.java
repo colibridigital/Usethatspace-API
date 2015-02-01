@@ -14,6 +14,7 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import persistence.UserDAO;
 
@@ -49,6 +50,7 @@ public class EndToEndTest {
 
     @Test
     @SneakyThrows
+    @Ignore
     public void endToEnd() {
         try {
             //Insert a user
