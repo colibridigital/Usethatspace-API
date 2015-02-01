@@ -1,6 +1,5 @@
 package entities;
 
-import auth.Identity;
 import auth.Password;
 import auth.Token;
 import com.google.code.morphia.annotations.Entity;
@@ -45,7 +44,7 @@ public class User extends MongoBase {
     private List<Vehicle> cars = new ArrayList<>();
     private boolean hasLicence;
     private boolean hasConvictions;
-    private List<Hobby> hobbyList = new ArrayList<>();
+    private List<Hobby> hobbies = new ArrayList<>();
 
     @SneakyThrows
     public boolean validatePassword(String password){
@@ -69,7 +68,7 @@ public class User extends MongoBase {
     }
 
     public void addHobby(Hobby hobby) {
-        hobbyList.add(hobby);
+        hobbies.add(hobby);
     }
 }
 
