@@ -6,6 +6,7 @@ import auth.Token;
 import com.google.gson.Gson;
 import entities.User;
 import lombok.extern.slf4j.Slf4j;
+import mail.RegistrationMailer;
 import org.bson.types.ObjectId;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,6 +62,8 @@ public class SaveProfileResource extends AuthenticatableResource{
 
         User updatedUser = getUpdatedUser(userJSON, existingToken, existingPassword, existingId);
         userDAO.save(updatedUser);
+
+        RegistrationMailer.send(updatedUser.getEmailAddress());
     }
 
     private User getUpdatedUser(JSONObject userJSON, String token, String password, ObjectId id) {

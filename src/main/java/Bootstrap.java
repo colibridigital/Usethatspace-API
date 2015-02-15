@@ -1,16 +1,12 @@
 import api.UTSApplication;
-import config.ReadProperties;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import mail.RegistrationMailer;
 import org.restlet.Component;
 import org.restlet.Server;
 import org.restlet.data.Parameter;
 import org.restlet.data.Protocol;
 import org.restlet.util.Series;
-
-import java.io.File;
-import java.io.InputStream;
-import java.net.URL;
 
 @Slf4j
 public class Bootstrap {
